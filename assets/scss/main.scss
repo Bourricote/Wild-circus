@@ -1,0 +1,52 @@
+body {
+  background-color: black;
+  color: $green;
+  font-family: 'Snowburst One', cursive;
+}
+
+table {
+  color: $green;
+}
+
+.banner {
+  img {
+    width: 100%;
+  }
+}
+
+h1 {
+  color: $pink;
+  text-shadow: 0 0 10px $pink;
+}
+
+a {
+  color: $green;
+  &:hover {
+    text-decoration: none;
+    color: $pink;
+  }
+}
+
+.card {
+  background-color: $blue;
+  color: $green;
+  font-size: 1.6rem;
+  .svg-inline--fa {
+    color: $pink;
+    font-size: 3rem;
+  }
+}
+
+.card-admin {
+  font-size: 1.6rem;
+}
+
+.btn-primary {
+  background-color: $green;
+  border: none;
+  font-size: 1.4rem;
+  &:hover {
+    background-color: $pink;
+    border: none;
+  }
+}

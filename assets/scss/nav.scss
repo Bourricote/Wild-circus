@@ -1,0 +1,15 @@
+.navbar {
+  background-color: $blue;
+}
+
+.nav-link {
+  font-size: 1.6rem;
+  color: $green;
+}
+
+.navbar-brand {
+  @extend .nav-link;
+  font-size: 2rem;
+  color: $pink;
+  text-shadow: 0 0 10px $pink;
+}

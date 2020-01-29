@@ -1,17 +1,17 @@
 @import "~bootstrap/scss/bootstrap";
 @import "vars";
+@import "main";
+@import "nav";
+@import "images";
+@import "footer";
 
-body {
-    background-color: lightgray;
-}
 
-.vignette {
-    max-height: 200px;
-}
 
-a {
-    color: #222222;
-    &:hover {
-        text-decoration: none;
-    }
-}
+
+/*.background {
+    background-image: url("../images/aurora2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}*/
+
+

@@ -1,1 +1,10 @@
-$titleFont : 'papyrus', sans-serif;
+@font-face {
+  font-family: 'papyrus';
+  src: url('../fonts/papyrus.ttf');
+}
+
+@import url('https://fonts.googleapis.com/css?family=Snowburst+One&display=swap');
+
+$pink : #FF5FF8;
+$green : #00D9EC;
+$blue : darken(#14133D, 10);
