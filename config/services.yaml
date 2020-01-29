@@ -6,6 +6,9 @@
 parameters:
     locale: 'fr'
     app.path.note_documents: /upload
+    mail_from: '%env(MAIL_FROM)%'
+    mail_password: '%env(MAIL_PASSWORD)%'
+    mail_server: '%env(MAIL_SERVER)%'
 services:
     # default configuration for services in *this* file
     _defaults:

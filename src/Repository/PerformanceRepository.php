@@ -26,9 +26,24 @@ class PerformanceRepository extends ServiceEntityRepository
         $query = $this->findAllQuery();
 
         if ($search->getName()) {
+            $words = explode(' ', $search->getName());
+
+            $clauses = '';
+            $parameters = [];
+            $i = 0;
+            foreach ($words as $word) {
+                $parameters[':val' . $i] = '%' . $word . '%';
+                if ($i === 0) {
+                    $clauses = 'p.name LIKE :val' . $i . ' OR p.text LIKE :val' . $i;
+                } else {
+                    $clauses .= ' AND p.name LIKE :val' . $i . ' OR p.text LIKE :val' . $i;
+                }
+                $i++;
+            }
+
             $query = $query
-                ->andwhere('p.name LIKE :val')
-                ->setParameter('val', '%' . $search->getName() . '%');
+                ->andwhere($clauses)
+                ->setParameters($parameters);
         }
 
         if ($search->getCategory()) {
