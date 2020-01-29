@@ -11,3 +11,8 @@
         <a class="btn btn-primary" href="{{ path('performance_index') }}">Retour</a>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('fillImageInput') }}
+{% endblock %}
