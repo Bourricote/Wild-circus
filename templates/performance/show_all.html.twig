@@ -21,17 +21,17 @@
         </div>
         <div class="row mb-5">
             {% for performance in performances %}
+
                 <div class="col-xs-12 col-md-6 mb-4">
-                    <div class="card">
+                    <a href="{{ path('one_performance', {'performance': performance.id}) }}">
+                        <div class="card">
                         <img src="/upload/{{ performance.imageName }}" alt="vignette" class="card-img-top">
                         <div class="card-body">
                             <p class="card-text">{{ performance.name }}</p>
                         </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <a href="{{ path('performance_show', {'id': performance.id}) }}">Voir</a>
-                        </div>
                     </div>
                 </div>
+                </a>
             {% endfor %}
         </div>
         <div class="pagination d-flex justify-content-center">

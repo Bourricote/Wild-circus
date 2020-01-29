@@ -8,3 +8,10 @@ body {
 .vignette {
     max-height: 200px;
 }
+
+a {
+    color: #222222;
+    &:hover {
+        text-decoration: none;
+    }
+}

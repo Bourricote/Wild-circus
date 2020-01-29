@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Performance{% endblock %}
+{% block title %}Modifier Numéro{% endblock %}
 
 {% block body %}
-    <h1>Edit Performance</h1>
+    <div class="container">
+    <h1>Modifier Numéro</h1>
 
     {{ include('performance/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('performance_index') }}">back to list</a>
+    <a href="{{ path('performance_index') }}">Retour</a>
 
     {{ include('performance/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

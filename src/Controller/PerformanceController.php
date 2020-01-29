@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Performance;
 use App\Entity\PerformanceSearch;
+use App\Form\CommentType;
 use App\Form\PerformanceSearchType;
 use App\Form\PerformanceType;
 use App\Repository\PerformanceRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,6 +44,37 @@ class PerformanceController extends AbstractController
 
         return $this->render('performance/show_all.html.twig', [
             'performances' => $performances,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{performance}", name="one_performance")
+     * @param Performance $performance
+     * @param Request $request
+     * @return Response
+     */
+    public function showOne(Performance $performance, Request $request, EntityManagerInterface $em): Response
+    {
+        $comments = $performance->getComments();
+
+        $comment = new Comment();
+
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $author = $this->getUser();
+            $comment->setPerformance($performance);
+            $comment->setAuthor($author);
+            $em->persist($comment);
+            $em->flush();
+            return $this->redirectToRoute('one_performance',  ['performance' => $performance->getId()]);
+        }
+
+        return $this->render('performance/show_one.html.twig', [
+            'performance' => $performance,
+            'comments' => $comments,
             'form' => $form->createView(),
         ]);
     }

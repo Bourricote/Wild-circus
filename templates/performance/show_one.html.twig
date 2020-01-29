@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Numéro{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ performance.name }}</h1>
+        <div class="row mb-5">
+            <div class="col-xs-12 mb-4">
+                <div class="card">
+                    <img src="/upload/{{ performance.imageName }}" alt="vignette" class="card-img-top">
+                    <div class="card-body">
+                        <p class="card-text">{{ performance.text|raw|nl2br }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Commentaires</h2>
+        {% for comment in comments %}
+            <div>
+                <ul>
+                    <li>Auteur : {{ comment.author.firstname }} {{ comment.author.lastname }} </li>
+                    <li>Note : {{ comment.rate }}</li>
+                    <li>Le : {{ comment.createdAt|date('d/m/Y') }}</li>
+                    <li>Commentaire : {{ comment.text }}</li>
+                    {% if app.user.id is defined and app.user.id == comment.author.id or is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('comment_edit', {'id': comment.id}) }}">Supprimer ce commentaire</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <br>
+        {% else %}
+            <h3>Pas de commentaire pour l'instant !</h3>
+        {% endfor %}
+
+        <div class="card p-3 mb-5">
+            {% if app.user %}
+                <h3>Ajouter un commentaire</h3>
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-primary">Ajouter</button>
+                {{ form_end(form) }}
+            {% else %}
+                <h3>Connectez-vous pour laisser un commentaire</h3>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
