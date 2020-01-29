@@ -118,7 +118,7 @@ class PerformanceController extends AbstractController
 
             $email_vars = [
                 'name' => $form['name']->getData(),
-                'path' => 'http://localhost:8000/performance/' . $performance->getId(),
+                'path' => 'http://localhost:8000/performance/show/' . $performance->getId(),
             ];
 
             if(isset($email_vars)){

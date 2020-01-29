@@ -22,7 +22,7 @@
             <tr>
 
                 <td>{{ performance.name }}</td>
-                <td>{{ performance.Text }}</td>
+                <td>{{ performance.text|raw }}</td>
                 <td>{{ performance.createdAt ? performance.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td><img src="/upload/{{ performance.imageName }}" alt="vignette" class="vignette"></td>
                 <td>
