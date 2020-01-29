@@ -2,18 +2,21 @@
 
 namespace App\Controller;
 
+use App\Repository\PerformanceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      */
-    public function index()
+    public function home(PerformanceRepository $performanceRepository)
     {
-        return $this->render('default/index.html.twig', [
-            'controller_name' => 'DefaultController',
+        $performances = $performanceRepository->findAll();
+
+        return $this->render('home.html.twig', [
+            'performances' => $performances,
         ]);
     }
 }
