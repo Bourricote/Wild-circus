@@ -3,9 +3,11 @@
 {% block title %}New Performance{% endblock %}
 
 {% block body %}
-    <h1>Create new Performance</h1>
+    <div class="container">
+        <h1>Ajouter un numéro</h1>
 
-    {{ include('performance/_form.html.twig') }}
+        {{ include('performance/_form.html.twig') }}
 
-    <a href="{{ path('performance_index') }}">back to list</a>
+        <a class="btn btn-primary" href="{{ path('performance_index') }}">Retour</a>
+    </div>
 {% endblock %}

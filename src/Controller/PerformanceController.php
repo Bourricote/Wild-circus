@@ -7,6 +7,7 @@ use App\Entity\PerformanceSearch;
 use App\Form\PerformanceSearchType;
 use App\Form\PerformanceType;
 use App\Repository\PerformanceRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class PerformanceController extends AbstractController
      * @param PerformanceRepository $performanceRepository
      * @return Response
      */
-    public function showAll(PerformanceRepository $performanceRepository, Request $request): Response
+    public function showAll(PerformanceRepository $performanceRepository, Request $request, PaginatorInterface $paginator): Response
     {
 
         $search = new PerformanceSearch();
@@ -30,7 +31,11 @@ class PerformanceController extends AbstractController
         $form = $this->createForm(PerformanceSearchType::class, $search);
         $form->handleRequest($request);
 
-        $performances = $performanceRepository->searchPerformance($search);
+        $performances = $paginator->paginate(
+            $performanceRepository->searchPerformance($search),
+            $request->query->getInt('page', 1),
+            6
+        );
 
         return $this->render('performance/show_all.html.twig', [
             'performances' => $performances,
