@@ -3,6 +3,7 @@
 {% block title %}Tour index{% endblock %}
 
 {% block body %}
+    <div class="container">
     <h1>Tour index</h1>
 
     <table class="table">
@@ -23,8 +24,8 @@
                 <td>{{ tour.date ? tour.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ tour.price }}</td>
                 <td>
-                    <a href="{{ path('tour_show', {'id': tour.id}) }}">show</a>
-                    <a href="{{ path('tour_edit', {'id': tour.id}) }}">edit</a>
+                    <a href="{{ path('tour_show', {'id': tour.id}) }}">voir</a>
+                    <a href="{{ path('tour_edit', {'id': tour.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +36,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('tour_new') }}">Create new</a>
+    <a href="{{ path('tour_new') }}">Ajouter</a>
+    </div>
 {% endblock %}

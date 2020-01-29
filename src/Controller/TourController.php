@@ -7,6 +7,7 @@ use App\Entity\TourSearch;
 use App\Form\TourSearchType;
 use App\Form\TourType;
 use App\Repository\TourRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,14 +22,18 @@ class TourController extends AbstractController
     /**
      * @Route("/", name="all_tours")
      */
-    public function showAll(TourRepository $tourRepository, Request $request): Response
+    public function showAll(TourRepository $tourRepository, Request $request, PaginatorInterface $paginator): Response
     {
         $search = new TourSearch();
 
         $form = $this->createForm(TourSearchType::class, $search);
         $form->handleRequest($request);
 
-        $tours = $tourRepository->searchTour($search);
+        $tours = $paginator->paginate(
+            $tourRepository->searchTour($search),
+            $request->query->getInt('page', 1),
+            10
+        );
 
         return $this->render('tour/show_all.html.twig', [
             'tours' => $tours,

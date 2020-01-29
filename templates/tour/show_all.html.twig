@@ -19,23 +19,38 @@
             </div>
         </div>
         <div class="row mb-5">
-            {% for tour in tours %}
-                <div class="col-xs-12 col-md-6">
-                    <div class="card">
-                        <div class="card-header card-title">
 
-                        </div>
-                        <div class="card-body">
 
-                            <p class="card-text">{{ tour.city }}</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Ville</th>
+                    <th>Date</th>
+                    <th>Prix</th>
+                    <th>Réserver</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for tour in tours %}
+                    <tr>
+                        <td>{{ tour.city }}</td>
+                        <td>{{ tour.date ? tour.date|date('d/m/Y à G:i') : '' }}</td>
+                        <td>{{ tour.price }}</td>
+                        <td>
+                            <a href="{{ path('tour_show', {'id': tour.id}) }}"><i class="fas fa-calendar-check"></i></a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-                        </div>
-                        <div class="card-footer d-flex justify-content-between">
-                            <a href="{{ path('tour_show', {'id': tour.id}) }}">Voir</a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
+        <div class="pagination d-flex justify-content-center">
+            {{ knp_pagination_render(tours) }}
         </div>
     </div>
 
