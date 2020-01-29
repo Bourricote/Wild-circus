@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container admin mb-5">
+        <div class="page-header">
+            <h1 class="ml-5">Gestion</h1>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <a href="{{ path('user_index') }}">
+                    <div class="card">
+                        <div class="card-header text-center py-4 mb-0">
+                            <i class="fas fa-users fa-fw"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            Fans
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-lg-4">
+                <a href="{{ path('category_index') }}">
+                    <div class="card">
+                        <div class="card-header text-center py-4 mb-0">
+                            <i class="fas fa-folder-open fa-fw"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            Catégories
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-lg-4">
+                <a href="{{ path('performance_index') }}">
+                    <div class="card">
+                        <div class="card-header text-center py-4 mb-0">
+                            <i class="fas fa-tasks fa-fw"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            Numéros
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-12 col-lg-4">
+                <a href="{{ path('tour_index') }}">
+                    <div class="card">
+                        <div class="card-header text-center py-4 mb-0">
+                            <i class="fas fa-walking fa-fw"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            Tournées
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
