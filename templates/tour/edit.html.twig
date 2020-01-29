@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Tour{% endblock %}
+
+{% block body %}
+    <h1>Edit Tour</h1>
+
+    {{ include('tour/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('tour_index') }}">back to list</a>
+
+    {{ include('tour/_delete_form.html.twig') }}
+{% endblock %}
