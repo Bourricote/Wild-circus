@@ -11,6 +11,8 @@ use App\Form\TourType;
 use App\Repository\TourRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -58,8 +60,14 @@ class TourController extends AbstractController
     public function showOne(Tour $tour, Request $request, EntityManagerInterface $em): Response
     {
         $booking = new Booking();
+        $user = $this->getUser();
 
-        $form = $this->createForm(BookingType::class, $booking);
+        if ($user) {
+            $form = $this->createForm(BookingType::class, $booking);
+        } else {
+            $form = $this->createForm(BookingType::class, $booking, ['email' => true]);
+        }
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -68,6 +76,56 @@ class TourController extends AbstractController
             $booking->setTour($tour);
             $em->persist($booking);
             $em->flush();
+
+            $mailBody = file_get_contents('../templates/email/booking.html.twig');
+
+            $email_vars = [
+                'number' => $form['nbTickets']->getData(),
+                'date' => $tour->getDate()->format('d/m/Y à G:i'),
+                'ville' => $tour->getCity(),
+            ];
+
+            if(isset($email_vars)){
+                foreach($email_vars as $k=>$v){
+                    $mailBody = str_replace($k, $v, $mailBody);
+                }
+            }
+
+            $mail = new PHPMailer(true);
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+            $mail->isSMTP();
+            $mail->Host = $this->getParameter('mail_server');
+            $mail->SMTPAuth = true;
+            $mail->Username = $this->getParameter('mail_from');
+            $mail->Password = $this->getParameter('mail_password');
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
+            $mail->setFrom($this->getParameter('mail_from'));
+
+            if ($user) {
+                $mail->addAddress($user->getEmail());
+            } else {
+                $mail->addAddress($form['email']->getData());
+            }
+
+            $mail->isHTML(true);
+            $mail->Subject = utf8_decode('Votre réservation au Wild Circus');
+            $mail->Body = utf8_decode(nl2br($mailBody));
+
+            $mail->SMTPOptions = [
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                ]
+            ];
+
+            if(!$mail->send()) {
+                echo 'Erreur, message non envoyé.';
+                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            } else {
+                echo 'Le message a bien été envoyé !';
+            }
 
             $this->addFlash(
                 'success',

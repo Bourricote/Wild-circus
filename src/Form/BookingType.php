@@ -13,10 +13,13 @@ class BookingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nbTickets')
-            ->add('email', TextType::class, [
+            ->add('nbTickets');
+        if ($options['email']) {
+            $builder
+                ->add('email', TextType::class, [
                 'mapped' => false,
-            ])
+            ]);
+        }
         ;
     }
 
@@ -24,6 +27,7 @@ class BookingType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Booking::class,
+            'email' => false,
         ]);
     }
 }
