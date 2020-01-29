@@ -51,7 +51,7 @@ class TourController extends AbstractController
     }
 
     /**
-     * @Route("/{tour}", name="one_tour")
+     * @Route("/show/{tour}", name="one_tour")
      * @param Tour $tour
      * @param Request $request
      * @param EntityManagerInterface $em

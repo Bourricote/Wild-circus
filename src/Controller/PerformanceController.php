@@ -49,7 +49,7 @@ class PerformanceController extends AbstractController
     }
 
     /**
-     * @Route("/{performance}", name="one_performance")
+     * @Route("/show/{performance}", name="one_performance")
      * @param Performance $performance
      * @param Request $request
      * @return Response
@@ -87,6 +87,8 @@ class PerformanceController extends AbstractController
 
     /**
      * @Route("/admin", name="performance_index", methods={"GET"})
+     * @param PerformanceRepository $performanceRepository
+     * @return Response
      */
     public function index(PerformanceRepository $performanceRepository): Response
     {
@@ -97,6 +99,9 @@ class PerformanceController extends AbstractController
 
     /**
      * @Route("/admin/new", name="performance_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
+     * @throws \PHPMailer\PHPMailer\Exception
      */
     public function new(Request $request): Response
     {
