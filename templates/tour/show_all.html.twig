@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <h1>Toutes nos dates de tournée</h1>
+            </div>
+            {% for tour in tours %}
+                <div class="col-xs-12 col-md-6">
+                    <div class="card">
+                        <div class="card-header card-title">
+
+                        </div>
+                        <div class="card-body">
+
+                            <p class="card-text">{{ tour.city }}</p>
+
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <a href="{{ path('tour_show', {'id': tour.id}) }}">Voir</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

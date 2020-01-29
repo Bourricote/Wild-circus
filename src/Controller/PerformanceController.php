@@ -16,6 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class PerformanceController extends AbstractController
 {
     /**
+     * @Route("/", name="all_performances", methods={"GET"})
+     */
+    public function showAll(PerformanceRepository $performanceRepository): Response
+    {
+        return $this->render('performance/show_all.html.twig', [
+            'performances' => $performanceRepository->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/admin", name="performance_index", methods={"GET"})
      */
     public function index(PerformanceRepository $performanceRepository): Response

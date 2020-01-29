@@ -15,8 +15,19 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class TourController extends AbstractController
 {
+
     /**
-     * @Route("/", name="tour_index", methods={"GET"})
+     * @Route("/", name="all_tours", methods={"GET"})
+     */
+    public function showAll(TourRepository $tourRepository): Response
+    {
+        return $this->render('tour/show_all.html.twig', [
+            'tours' => $tourRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/admin", name="tour_index", methods={"GET"})
      */
     public function index(TourRepository $tourRepository): Response
     {
@@ -26,7 +37,7 @@ class TourController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="tour_new", methods={"GET","POST"})
+     * @Route("/admin/new", name="tour_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -49,7 +60,7 @@ class TourController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="tour_show", methods={"GET"})
+     * @Route("/admin/{id}", name="tour_show", methods={"GET"})
      */
     public function show(Tour $tour): Response
     {
@@ -59,7 +70,7 @@ class TourController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="tour_edit", methods={"GET","POST"})
+     * @Route("/admin/{id}/edit", name="tour_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Tour $tour): Response
     {
@@ -79,7 +90,7 @@ class TourController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="tour_delete", methods={"DELETE"})
+     * @Route("/admin/{id}", name="tour_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Tour $tour): Response
     {
