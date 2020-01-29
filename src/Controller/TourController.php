@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Entity\Tour;
 use App\Entity\TourSearch;
+use App\Form\BookingType;
 use App\Form\TourSearchType;
 use App\Form\TourType;
 use App\Repository\TourRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +24,10 @@ class TourController extends AbstractController
 
     /**
      * @Route("/", name="all_tours")
+     * @param TourRepository $tourRepository
+     * @param Request $request
+     * @param PaginatorInterface $paginator
+     * @return Response
      */
     public function showAll(TourRepository $tourRepository, Request $request, PaginatorInterface $paginator): Response
     {
@@ -37,6 +44,41 @@ class TourController extends AbstractController
 
         return $this->render('tour/show_all.html.twig', [
             'tours' => $tours,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{tour}", name="one_tour")
+     * @param Tour $tour
+     * @param Request $request
+     * @param EntityManagerInterface $em
+     * @return Response
+     */
+    public function showOne(Tour $tour, Request $request, EntityManagerInterface $em): Response
+    {
+        $booking = new Booking();
+
+        $form = $this->createForm(BookingType::class, $booking);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $this->getUser();
+            $booking->setUser($user);
+            $booking->setTour($tour);
+            $em->persist($booking);
+            $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Votre réservation a été prise en compte !'
+            );
+
+            return $this->redirectToRoute('one_tour',  ['tour' => $tour->getId()]);
+        }
+
+        return $this->render('tour/show_one.html.twig', [
+            'tour' => $tour,
             'form' => $form->createView(),
         ]);
     }

@@ -10,8 +10,8 @@
             <div class="col-5">
                 {{ form_start(form) }}
                 <div class="row">
-                    <div class="col-5">{{ form_row(form.city) }}</div>
-                    <div class="col-2">
+                    <div class="col-sm-12 col-lg-5">{{ form_row(form.city) }}</div>
+                    <div class="col-sm-12 col-lg-2">
                         <button class="btn btn-primary" type="submit" name="btnSearch">Rechercher</button>
                     </div>
                 </div>
@@ -19,8 +19,6 @@
             </div>
         </div>
         <div class="row mb-5">
-
-
             <table class="table">
                 <thead>
                 <tr>
@@ -37,7 +35,7 @@
                         <td>{{ tour.date ? tour.date|date('d/m/Y à G:i') : '' }}</td>
                         <td>{{ tour.price }}</td>
                         <td>
-                            <a href="{{ path('tour_show', {'id': tour.id}) }}"><i class="fas fa-calendar-check"></i></a>
+                            <a href="{{ path('one_tour', {'tour': tour.id}) }}"><i class="fas fa-calendar-check"></i></a>
                         </td>
                     </tr>
                 {% else %}

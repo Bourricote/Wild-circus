@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Booking;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,10 +14,9 @@ class BookingType extends AbstractType
     {
         $builder
             ->add('nbTickets')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('user')
-            ->add('tour')
+            ->add('email', TextType::class, [
+                'mapped' => false,
+            ])
         ;
     }
 
