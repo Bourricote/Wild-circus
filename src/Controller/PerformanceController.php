@@ -69,6 +69,12 @@ class PerformanceController extends AbstractController
             $comment->setAuthor($author);
             $em->persist($comment);
             $em->flush();
+
+            $this->addFlash(
+                'success',
+                'Merci pour votre commentaire !'
+            );
+
             return $this->redirectToRoute('one_performance',  ['performance' => $performance->getId()]);
         }
 
@@ -146,6 +152,11 @@ class PerformanceController extends AbstractController
                 echo 'Le message a bien été envoyé !';
             }
 
+            $this->addFlash(
+                'success',
+                'Numéro ajouté !'
+            );
+
             return $this->redirectToRoute('performance_index');
         }
 
@@ -179,6 +190,11 @@ class PerformanceController extends AbstractController
             return $this->redirectToRoute('performance_index');
         }
 
+        $this->addFlash(
+            'success',
+            'Numéro modifié !'
+        );
+
         return $this->render('performance/edit.html.twig', [
             'performance' => $performance,
             'form' => $form->createView(),
@@ -194,6 +210,11 @@ class PerformanceController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($performance);
             $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Numéro supprimé !'
+            );
         }
 
         return $this->redirectToRoute('performance_index');

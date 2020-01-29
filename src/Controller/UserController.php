@@ -57,6 +57,11 @@ class UserController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            $this->addFlash(
+                'success',
+                'Fan ajouté !'
+            );
+
             return $this->redirectToRoute('user_index');
         }
 
@@ -90,6 +95,11 @@ class UserController extends AbstractController
             return $this->redirectToRoute('user_index');
         }
 
+        $this->addFlash(
+            'success',
+            'Fan modifié !'
+        );
+
         return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
@@ -105,6 +115,11 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
+
+            $this->addFlash(
+                'success',
+                'Fan supprimé !'
+            );
         }
 
         return $this->redirectToRoute('user_index');
