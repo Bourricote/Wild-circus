@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Category;
 use App\Entity\Performance;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -20,8 +21,8 @@ class PerformanceType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom',
             ])
-            ->add('Text', TextType::class, [
-                'label' => 'Description',
+            ->add('text', CKEditorType::class, [
+                'label'=> 'Description'
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
