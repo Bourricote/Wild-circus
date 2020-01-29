@@ -6,16 +6,13 @@
             <div class="col-md-12">
                 <h1>Nouveautés</h1>
             </div>
+
             {% for performance in performances %}
                 <div class="col-xs-12 col-md-4">
                     <div class="card">
-                        <div class="card-header card-title">
-
-                        </div>
+                            <img src="/upload/{{ performance.imageName }}" alt="vignette" class="card-img-top">
                         <div class="card-body">
-
                             <p class="card-text">{{ performance.name }}</p>
-
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <a href="{{ path('performance_show', {'id': performance.id}) }}">Voir</a>

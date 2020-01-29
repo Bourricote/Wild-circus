@@ -2,14 +2,20 @@
 
 namespace App\Entity;
 
+use DateTime;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PerformanceRepository")
  * @ORM\HasLifecycleCallbacks
+ * @Vich\Uploadable()
  */
 class Performance
 {
@@ -44,6 +50,12 @@ class Performance
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $imageName;
+
+    /**
+     * @var File
+     * @Vich\UploadableField(mapping="performance", fileNameProperty="imageName")
+     */
+    private $imageFile;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="performances")
@@ -141,6 +153,28 @@ class Performance
     {
         $this->imageName = $imageName;
 
+        return $this;
+    }
+
+    /**
+     * @return null|File
+     */
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File $imageFile
+     * @return Performance
+     * @throws Exception
+     */
+    public function setImageFile(?File $imageFile): Performance
+    {
+        $this->imageFile = $imageFile;
+        if ($this->imageFile instanceof UploadedFile) {
+            $this->updatedAt = new DateTime();
+        }
         return $this;
     }
 

@@ -14,7 +14,7 @@ class DefaultController extends AbstractController
      */
     public function home(PerformanceRepository $performanceRepository, TourRepository $tourRepository)
     {
-        $performances = $performanceRepository->findBy([], ['createdAt' => 'ASC'], 3, 0 );
+        $performances = $performanceRepository->findBy([], ['createdAt' => 'DESC'], 3, 0 );
 
         $nextTour = $tourRepository->findBy([], ['date' => 'ASC'], 1, 0);
 

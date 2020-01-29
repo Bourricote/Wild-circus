@@ -9,6 +9,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 
 class PerformanceType extends AbstractType
 {
@@ -26,6 +28,20 @@ class PerformanceType extends AbstractType
                 'placeholder' => 'Choisir une catégorie',
                 'choice_label' => 'name',
                 'label' => 'Catégorie',
+            ])
+            ->add('imageFile', FileType::class, [
+                'label' => 'Image du numéro',
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2000k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Formats de fichier acceptés : Jpeg, Png',
+                    ])
+                ],
             ])
         ;
     }
