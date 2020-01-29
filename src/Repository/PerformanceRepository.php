@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Performance;
+use App\Entity\PerformanceSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Performance|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +19,31 @@ class PerformanceRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Performance::class);
+    }
+
+    public function searchPerformance(PerformanceSearch $search)
+    {
+        $query = $this->findAllQuery();
+
+        if ($search->getName()) {
+            $query = $query
+                ->andwhere('p.name LIKE :val')
+                ->setParameter('val', '%' . $search->getName() . '%');
+        }
+
+        if ($search->getCategory()) {
+            $query = $query
+                ->join('p.category', 'c')
+                ->andwhere('c.name = :category')
+                ->setParameter('category', $search->getCategory()->getName());
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
+    private function findAllQuery(): QueryBuilder
+    {
+        return $this->createQueryBuilder('p');
     }
 
     // /**

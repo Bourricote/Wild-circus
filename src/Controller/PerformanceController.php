@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Performance;
+use App\Entity\PerformanceSearch;
+use App\Form\PerformanceSearchType;
 use App\Form\PerformanceType;
 use App\Repository\PerformanceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,11 +19,22 @@ class PerformanceController extends AbstractController
 {
     /**
      * @Route("/", name="all_performances", methods={"GET"})
+     * @param PerformanceRepository $performanceRepository
+     * @return Response
      */
-    public function showAll(PerformanceRepository $performanceRepository): Response
+    public function showAll(PerformanceRepository $performanceRepository, Request $request): Response
     {
+
+        $search = new PerformanceSearch();
+
+        $form = $this->createForm(PerformanceSearchType::class, $search);
+        $form->handleRequest($request);
+
+        $performances = $performanceRepository->searchPerformance($search);
+
         return $this->render('performance/show_all.html.twig', [
-            'performances' => $performanceRepository->findAll(),
+            'performances' => $performances,
+            'form' => $form->createView(),
         ]);
     }
 
