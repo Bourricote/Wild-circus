@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PerformanceController extends AbstractController
 {
     /**
-     * @Route("/", name="all_performances", methods={"GET"})
+     * @Route("/", name="all_performances")
      * @param PerformanceRepository $performanceRepository
      * @return Response
      */

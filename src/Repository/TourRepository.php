@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Tour;
+use App\Entity\TourSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Tour|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +19,24 @@ class TourRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Tour::class);
+    }
+
+    public function searchTour(TourSearch $search)
+    {
+        $query = $this->findAllQuery();
+
+        if ($search->getCity()) {
+            $query = $query
+                ->andwhere('t.city LIKE :val')
+                ->setParameter('val', '%' . $search->getCity() . '%');
+        }
+
+        return $query->getQuery()->getResult();
+    }
+
+    private function findAllQuery(): QueryBuilder
+    {
+        return $this->createQueryBuilder('t');
     }
 
     // /**

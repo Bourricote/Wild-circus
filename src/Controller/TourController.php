@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Tour;
+use App\Entity\TourSearch;
+use App\Form\TourSearchType;
 use App\Form\TourType;
 use App\Repository\TourRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,12 +19,20 @@ class TourController extends AbstractController
 {
 
     /**
-     * @Route("/", name="all_tours", methods={"GET"})
+     * @Route("/", name="all_tours")
      */
-    public function showAll(TourRepository $tourRepository): Response
+    public function showAll(TourRepository $tourRepository, Request $request): Response
     {
+        $search = new TourSearch();
+
+        $form = $this->createForm(TourSearchType::class, $search);
+        $form->handleRequest($request);
+
+        $tours = $tourRepository->searchTour($search);
+
         return $this->render('tour/show_all.html.twig', [
-            'tours' => $tourRepository->findAll(),
+            'tours' => $tours,
+            'form' => $form->createView(),
         ]);
     }
 
