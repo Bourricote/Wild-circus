@@ -58,6 +58,28 @@ a {
   }
 }
 
+.pagination {
+  .page-link {
+    color: $green;
+    background-color: $blue;
+    border-color: $blue;
+  }
+  .page-item.active {
+    .page-link {
+      background-color: $green;
+      border-color: $green;
+      color: $blue;
+    }
+  }
+  .page-item.disabled {
+    .page-link {
+      color: $green;
+      background-color: $blue;
+      border-color: $blue;
+    }
+  }
+}
+
 @media (max-width: 950px) {
   h1 {
     font-size: 1.8rem;
