@@ -11,7 +11,7 @@
                 </h1>
             </div>
 
-            <div class="col-xs-12 col-lg-5">
+            <div class="col-xs-12 col-lg-6">
                 {{ form_start(form) }}
                 <div class="row mt-3">
                     <div class="col-sm-12 col-lg-5">{{ form_row(form.city) }}</div>
@@ -23,32 +23,25 @@
             </div>
         </div>
         <div class="row mb-5">
-            <table class="table admin-table">
-                <thead>
-                <tr>
-                    <th>Ville</th>
-                    <th>Date</th>
-                    <th>Prix</th>
-                    <th class="text-center">Places</th>
-                </tr>
-                </thead>
-                <tbody>
+
                 {% for tour in tours %}
-                    <tr>
-                        <td>{{ tour.city }}</td>
-                        <td>{{ tour.date ? tour.date|date('d/m/Y à G:i') : '' }}</td>
-                        <td>{{ tour.price }}€ </td>
-                        <td class="text-center">
-                            <a href="{{ path('one_tour', {'tour': tour.id}) }}"><i class="fas fa-calendar-check"></i></a>
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr>
-                        <td colspan="5">no records found</td>
-                    </tr>
+                    <div class="col-xs-12 col-md-3 mb-4">
+                        <a href="{{ path('one_tour', {'tour': tour.id}) }}">
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    <span class="card-title">{{ tour.city }}</span>
+                                </div>
+                                <div class="card-body">
+                                    <p>{{ tour.date|date('d/m/Y à G:i') }}</p>
+                                    <p>Place : {{ tour.price }}€ </p>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="{{ path('one_tour', {'tour': tour.id}) }}"><i class="fas fa-calendar-check"></i></a>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                 {% endfor %}
-                </tbody>
-            </table>
         </div>
 
         <div class="pagination d-flex justify-content-center">

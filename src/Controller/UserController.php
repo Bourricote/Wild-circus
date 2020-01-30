@@ -16,6 +16,14 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 class UserController extends AbstractController
 {
+    /**
+     * @Route("/profile/{user}", name="profile")
+     * @return Response
+     */
+    public function profile(): Response
+    {
+        return $this->render('user/profile.html.twig');
+    }
 
     /**
      * @Route("/admin", name="admin")

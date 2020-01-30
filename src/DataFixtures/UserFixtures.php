@@ -23,7 +23,7 @@ class UserFixtures extends Fixture
         // Admin
         $user = new User();
         $user->setFirstname('Anne');
-        $user->setLastname('Quiedeville');
+        $user->setLastname('Bourricote');
         $user->setEmail(strtolower($user->getFirstname() . '.' . $user->getLastname() . '@wild-circus.fr'));
         $user->setPassword($this->passwordEncoder->encodePassword($user, 'password'));
         $user->setRoles(['ROLE_ADMIN']);
@@ -32,9 +32,9 @@ class UserFixtures extends Fixture
 
         // Fan
         $user = new User();
-        $user->setFirstname('Greg');
+        $user->setFirstname('Gregory');
         $user->setLastname('Beaudet');
-        $user->setEmail(strtolower($user->getFirstname() . '.' . $user->getLastname() . '@wild-circus.fr'));
+        $user->setEmail(strtolower($user->getFirstname() . '.' . $user->getLastname() . '@orange.fr'));
         $user->setPassword($this->passwordEncoder->encodePassword($user, 'password'));
         $user->setRoles(['ROLE_FAN']);
         $manager->persist($user);

@@ -11,22 +11,20 @@
         <thead>
             <tr>
                 <th>Nom</th>
-                <th>Texte</th>
                 <th>Créé le</th>
                 <th>Image</th>
-                <th>actions</th>
+                <th class="text-center">actions</th>
             </tr>
         </thead>
         <tbody>
         {% for performance in performances %}
             <tr>
                 <td>{{ performance.name }}</td>
-                <td>{{ performance.text|raw }}</td>
                 <td>{{ performance.createdAt ? performance.createdAt|date('d/m/Y') : '' }}</td>
                 <td><img src="/upload/{{ performance.imageName }}" alt="vignette" class="vignette"></td>
-                <td>
-                    <a href="{{ path('performance_show', {'id': performance.id}) }}">voir</a>
-                    <a href="{{ path('performance_edit', {'id': performance.id}) }}">modifier</a>
+                <td class="text-center">
+                    <a href="{{ path('performance_show', {'id': performance.id}) }}"><i class="fas fa-search-plus mr-2"></i></a>
+                    <a href="{{ path('performance_edit', {'id': performance.id}) }}"><i class="fas fa-pencil-alt"></i></a>
                 </td>
             </tr>
         {% else %}

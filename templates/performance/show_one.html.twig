@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <h2>Commentaires</h2>
+        <h2 class="my-5">Commentaires</h2>
         {% for comment in comments %}
             <div>
                 <ul>
@@ -32,10 +32,10 @@
             </div>
             <br>
         {% else %}
-            <h3>Pas de commentaire pour l'instant !</h3>
+            <h4>Pas de commentaire pour l'instant !</h4>
         {% endfor %}
 
-        <div class="card p-3 mb-5">
+        <div class="card p-3 my-5">
             {% if app.user %}
                 <h3>Ajouter un commentaire</h3>
                 {{ form_start(form) }}

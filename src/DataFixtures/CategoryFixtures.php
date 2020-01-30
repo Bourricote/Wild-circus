@@ -14,12 +14,12 @@ class CategoryFixtures extends Fixture
             'identifier' => 'voltige',
         ],
         [
-            'name' => 'Mécanique',
-            'identifier' => 'meca',
+            'name' => 'Danse',
+            'identifier' => 'danse',
         ],
         [
-            'name' => 'Clowns',
-            'identifier' => 'clowns',
+            'name' => 'Musique',
+            'identifier' => 'musique',
         ],
         [
             'name' => 'Animaux',

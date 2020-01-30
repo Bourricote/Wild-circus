@@ -41,7 +41,7 @@ class TourController extends AbstractController
         $tours = $paginator->paginate(
             $tourRepository->searchTour($search),
             $request->query->getInt('page', 1),
-            10
+            8
         );
 
         return $this->render('tour/show_all.html.twig', [

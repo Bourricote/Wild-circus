@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mb-5 justify-content-center">
+            <div class="col-12 my-5 text-center">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>{{ app.user.firstname }} {{ app.user.lastname }}</h1>
+                    </div>
+                    <div class="card-body">
+                        <h2 class="my-4">Mes réservations</h2>
+                        {% for booking in app.user.bookings %}
+                            <p>{{ booking.nbTickets }} places pour le {{ booking.tour.date|date('d/m/Y à G:i') }}
+                                à {{ booking.tour.city }}</p>
+                        {% else %}
+                            <p>Pas de réservation pour l'instant</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
