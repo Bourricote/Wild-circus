@@ -23,7 +23,9 @@
             {% endfor %}
         {% endfor %}
     </div>
+<div class="min-footer">
     {% block body %}{% endblock %}
+</div>
     {% block javascripts %}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}

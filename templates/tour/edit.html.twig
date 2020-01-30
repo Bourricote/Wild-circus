@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Tour{% endblock %}
+{% block title %}Modifier date{% endblock %}
 
 {% block body %}
-    <h1>Edit Tour</h1>
+    <div class="container">
+        <h1>Modifier date</h1>
 
-    {{ include('tour/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('tour/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    <a href="{{ path('tour_index') }}">back to list</a>
+        <a href="{{ path('tour_index') }}" class="btn btn-primary my-3">Retour</a>
 
-    {{ include('tour/_delete_form.html.twig') }}
+        {{ include('tour/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

@@ -192,13 +192,13 @@ class PerformanceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'Numéro modifié !'
+            );
+
             return $this->redirectToRoute('performance_index');
         }
-
-        $this->addFlash(
-            'success',
-            'Numéro modifié !'
-        );
 
         return $this->render('performance/edit.html.twig', [
             'performance' => $performance,

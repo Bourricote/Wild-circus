@@ -1,38 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Fans{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <div class="container">
+    <h1>Tous les fans</h1>
 
-    <table class="table">
+        <a href="{{ path('user_new') }}" class="btn btn-primary my-3"> Ajouter fan</a>
+
+    <table class="table admin-table">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>Password</th>
                 <th>Firstname</th>
                 <th>Lastname</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.id }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
                 <td>{{ user.firstname }}</td>
                 <td>{{ user.lastname }}</td>
-                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">voir</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -42,6 +37,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('user_new') }}">Create new</a>
+    </div>
 {% endblock %}

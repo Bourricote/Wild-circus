@@ -1,33 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Performance index{% endblock %}
+{% block title %}Numéros{% endblock %}
 
 {% block body %}
     <div class="container">
-    <h1>Performance index</h1>
+    <h1>Tous les numéros</h1>
+        <a href="{{ path('performance_new') }}" class="btn btn-primary my-3">Ajouter</a>
 
-    <table class="table">
+        <table class="table admin-table">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Text</th>
-                <th>CreatedAt</th>
-
-                <th>ImageName</th>
+                <th>Nom</th>
+                <th>Texte</th>
+                <th>Créé le</th>
+                <th>Image</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for performance in performances %}
             <tr>
-
                 <td>{{ performance.name }}</td>
                 <td>{{ performance.text|raw }}</td>
-                <td>{{ performance.createdAt ? performance.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ performance.createdAt ? performance.createdAt|date('d/m/Y') : '' }}</td>
                 <td><img src="/upload/{{ performance.imageName }}" alt="vignette" class="vignette"></td>
                 <td>
-                    <a href="{{ path('performance_show', {'id': performance.id}) }}">show</a>
-                    <a href="{{ path('performance_edit', {'id': performance.id}) }}">edit</a>
+                    <a href="{{ path('performance_show', {'id': performance.id}) }}">voir</a>
+                    <a href="{{ path('performance_edit', {'id': performance.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -38,6 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('performance_new') }}">Create new</a>
     </div>
 {% endblock %}

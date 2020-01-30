@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Performance{% endblock %}
+{% block title %}Nouveau numéro{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -8,7 +8,7 @@
 
         {{ include('performance/_form.html.twig') }}
 
-        <a class="btn btn-primary" href="{{ path('performance_index') }}">Retour</a>
+        <a class="btn btn-primary my-3" href="{{ path('performance_index') }}">Retour</a>
     </div>
 {% endblock %}
 

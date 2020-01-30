@@ -1,25 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tour index{% endblock %}
+{% block title %}Dates{% endblock %}
 
 {% block body %}
     <div class="container">
-    <h1>Tour index</h1>
+    <h1>Dates de tournée</h1>
+        <a href="{{ path('tour_new') }}" class="btn btn-primary my-3">Ajouter</a>
 
-    <table class="table">
+    <table class="table admin-table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>City</th>
+                <th>Ville</th>
                 <th>Date</th>
-                <th>Price</th>
+                <th>Prix</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for tour in tours %}
             <tr>
-                <td>{{ tour.id }}</td>
                 <td>{{ tour.city }}</td>
                 <td>{{ tour.date ? tour.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ tour.price }}</td>
@@ -35,7 +34,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('tour_new') }}">Ajouter</a>
     </div>
 {% endblock %}

@@ -4,13 +4,13 @@
 
 {% block body %}
     <div class="container">
-    <h1>Modifier Numéro</h1>
+        <h1>Modifier Numéro</h1>
 
-    {{ include('performance/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('performance/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    <a href="{{ path('performance_index') }}">Retour</a>
+        <a href="{{ path('performance_index') }}" class="btn btn-primary my-3">Retour</a>
 
-    {{ include('performance/_delete_form.html.twig') }}
+        {{ include('performance/_delete_form.html.twig') }}
     </div>
 {% endblock %}
 

@@ -4,7 +4,11 @@ body {
   font-family: 'Snowburst One', cursive;
 }
 
-table {
+.min-footer {
+  min-height: 55vh;
+}
+
+.admin-table {
   color: $green;
 }
 
@@ -45,8 +49,17 @@ a {
   background-color: $green;
   border: none;
   font-size: 1.4rem;
+  color: black;
   &:hover {
     background-color: $pink;
     border: none;
+  }
+}
+
+.btn-danger {
+  @extend .btn-primary;
+  background-color: $pink;
+  &:hover {
+    background-color: $green;
   }
 }

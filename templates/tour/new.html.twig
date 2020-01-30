@@ -4,10 +4,10 @@
 
 {% block body %}
     <div class="container">
-        <h1>Create new Tour</h1>
+        <h1>Ajouter date de tournée</h1>
 
         {{ include('tour/_form.html.twig') }}
 
-        <a href="{{ path('tour_index') }}">back to list</a>
+        <a href="{{ path('tour_index') }}" class="btn btn-primary my-3">Retour</a>
     </div>
 {% endblock %}
