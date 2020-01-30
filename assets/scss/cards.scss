@@ -1,0 +1,29 @@
+.card {
+  background-color: $blue;
+  color: $green;
+  font-size: 1.6rem;
+  .svg-inline--fa {
+    color: $pink;
+    font-size: 3rem;
+  }
+  .card-image {
+    margin-bottom: -4rem;
+  }
+  .card-title {
+    padding-left: 1rem;
+    display: inline-block;
+    width: 100%;
+    background-color:
+            rgba(0, 0, 0, 0.8);
+    line-height: 2;
+    position: relative;
+    bottom: 4rem;
+  }
+  .card-header {
+    color: $pink;
+  }
+}
+
+.card-admin {
+  font-size: 1.6rem;
+}
