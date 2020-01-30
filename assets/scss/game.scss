@@ -14,7 +14,7 @@
 
 .hole:after {
   display: block;
-  background: url("../images/dirt.jpeg") bottom center no-repeat;
+  background: url("../images/dirt.png") bottom center no-repeat;
   background-size: contain;
   content: '';
   width: 100%;
@@ -25,8 +25,8 @@
 }
 
 .mole {
-  background: url("../images/mole.png") bottom center no-repeat;
-  background-size: 60%;
+  background: url("../images/navi.png") bottom center no-repeat;
+  background-size: 35%;
   position: absolute;
   top: 100%;
   width: 100%;

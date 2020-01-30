@@ -26,7 +26,7 @@ function randomHole(holes) {
 }
 
 function peep() {
-    const time = randomTime(500, 2000);
+    const time = randomTime(500, 1500);
     const hole = randomHole(holes);
     hole.classList.add('up');
     setTimeout(() => {
@@ -42,7 +42,7 @@ function startGame() {
     score = 0;
     timeUp = false;
     peep();
-    setTimeout(() => timeUp = true, 10000)
+    setTimeout(() => timeUp = true, 20000)
 }
 
 for (let i = 0; i < moles.length; i++) {
