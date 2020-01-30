@@ -21,6 +21,10 @@ body {
 h1 {
   color: $pink;
   text-shadow: 0 0 10px $pink;
+  img {
+    height: 40px;
+    margin: 0 0.6rem;
+  }
 }
 
 a {

@@ -109,7 +109,7 @@ class TourController extends AbstractController
             }
 
             $mail->isHTML(true);
-            $mail->Subject = utf8_decode('Votre réservation au Wild Circus');
+            $mail->Subject = utf8_decode('Votre réservation pour Avatar Circus');
             $mail->Body = utf8_decode(nl2br($mailBody));
 
             $mail->SMTPOptions = [
