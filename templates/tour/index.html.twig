@@ -21,7 +21,7 @@
             <tr>
                 <td>{{ tour.city }}</td>
                 <td>{{ tour.date ? tour.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ tour.price }}</td>
+                <td>{{ tour.price }}€ </td>
                 <td>
                     <a href="{{ path('tour_show', {'id': tour.id}) }}">voir</a>
                     <a href="{{ path('tour_edit', {'id': tour.id}) }}">modifier</a>

@@ -33,7 +33,7 @@
                     <tr>
                         <td>{{ tour.city }}</td>
                         <td>{{ tour.date ? tour.date|date('d/m/Y à G:i') : '' }}</td>
-                        <td>{{ tour.price }}</td>
+                        <td>{{ tour.price }}€ </td>
                         <td>
                             <a href="{{ path('one_tour', {'tour': tour.id}) }}"><i class="fas fa-calendar-check"></i></a>
                         </td>
