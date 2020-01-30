@@ -132,7 +132,7 @@ class TourController extends AbstractController
                 'Votre réservation a été prise en compte !'
             );
 
-            return $this->redirectToRoute('one_tour',  ['tour' => $tour->getId()]);
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('tour/show_one.html.twig', [
