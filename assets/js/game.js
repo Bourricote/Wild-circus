@@ -20,7 +20,6 @@ function randomHole(holes) {
     if (hole === lastHole) {
         return randomHole(holes);
     }
-
     lastHole = hole;
     return hole;
 }
@@ -37,14 +36,6 @@ function peep() {
     }, time)
 }
 
-function startGame() {
-    scoreBoard.textContent = '0';
-    score = 0;
-    timeUp = false;
-    peep();
-    setTimeout(() => timeUp = true, 20000)
-}
-
 for (let i = 0; i < moles.length; i++) {
     moles[i].addEventListener('click', () => {
         score++;
@@ -52,3 +43,42 @@ for (let i = 0; i < moles.length; i++) {
         scoreBoard.textContent = score;
     })
 }
+
+const timer = document.getElementById('timer');
+let timeLeft = 20;
+
+timer.textContent = timeLeft;
+
+function countdown() {
+    setTimeout(() => {
+        timeLeft--;
+        timer.textContent = timeLeft;
+        if (timeLeft > 0) {
+            countdown()
+        }
+    }, 1000);
+}
+
+const end = document.getElementById('end');
+const endText =document.getElementById('end-text');
+
+const winText = 'Félicitations, tu gagnes une place gratuite pour notre spectacle !';
+const loseText = 'Retente ta chance pour gagner une place !';
+
+function startGame() {
+    scoreBoard.textContent = '0';
+    score = 0;
+    timeUp = false;
+    peep();
+    setTimeout(() => {
+        timeUp = true;
+        end.classList.add('display');
+        if (score > 15) {
+            endText.textContent = winText;
+        } else {
+            endText.textContent = loseText;
+        }
+    }, 20000);
+    countdown();
+}
+
