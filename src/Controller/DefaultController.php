@@ -23,4 +23,12 @@ class DefaultController extends AbstractController
             'next_tour' => $nextTour,
         ]);
     }
+
+    /**
+     * @Route("/game", name="game")
+     */
+    public function game()
+    {
+        return $this->render('game.html.twig');
+    }
 }

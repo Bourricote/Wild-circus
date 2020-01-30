@@ -13,9 +13,12 @@
             <li>
                 <a class="nav-link" href="{{ path('all_tours') }}">Tournées</a>
             </li>
+            <li>
+                <a class="nav-link" href="{{ path('game') }}">Jeu</a>
+            </li>
         </ul>
 
-        <a class="navbar-brand" href="{{ path('home') }}">Wild Circus</a>
+        <a class="navbar-brand" href="{{ path('home') }}">Avatar Circus</a>
 
         <ul class="navbar-nav ml-auto">
             {% if is_granted('ROLE_ADMIN') %}
