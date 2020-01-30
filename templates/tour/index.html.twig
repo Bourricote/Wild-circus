@@ -20,7 +20,7 @@
         {% for tour in tours %}
             <tr>
                 <td>{{ tour.city }}</td>
-                <td>{{ tour.date ? tour.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ tour.date ? tour.date|date('d/m/Y à G:i') : '' }}</td>
                 <td>{{ tour.price }}€ </td>
                 <td class="text-center">
                     <a href="{{ path('tour_show', {'id': tour.id}) }}"><i class="fas fa-search-plus mr-2"></i></a>

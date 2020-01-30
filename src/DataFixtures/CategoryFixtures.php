@@ -11,19 +11,15 @@ class CategoryFixtures extends Fixture
     const CATEGORIES = [
         [
             'name' => 'Voltige',
-            'identifier' => 'voltige',
         ],
         [
             'name' => 'Danse',
-            'identifier' => 'danse',
         ],
         [
             'name' => 'Musique',
-            'identifier' => 'musique',
         ],
         [
             'name' => 'Animaux',
-            'identifier' => 'animals',
         ],
     ];
 
@@ -33,7 +29,6 @@ class CategoryFixtures extends Fixture
         foreach (self::CATEGORIES as $data) {
             $category = new Category();
             $category->setName($data['name']);
-            $category->setIdentifier($data['identifier']);
 
             $manager->persist($category);
             $this->addReference('category_' . $counter, $category);

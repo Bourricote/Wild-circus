@@ -12,7 +12,6 @@
             <thead>
             <tr>
                 <th>Nom</th>
-                <th>Identifier</th>
                 <th class="text-center">actions</th>
             </tr>
             </thead>
@@ -20,7 +19,6 @@
             {% for category in categories %}
                 <tr>
                     <td>{{ category.name }}</td>
-                    <td>{{ category.identifier }}</td>
                     <td class="text-center">
                         <a href="{{ path('category_show', {'id': category.id}) }}"><i class="fas fa-search-plus mr-2"></i></a>
                         <a href="{{ path('category_edit', {'id': category.id}) }}"> <i class="fas fa-pencil-alt"></i></a>
