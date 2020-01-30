@@ -21,6 +21,7 @@ body {
 h1 {
   color: $pink;
   text-shadow: 0 0 10px $pink;
+
   img {
     height: 40px;
     margin: 0 0.6rem;
@@ -29,6 +30,7 @@ h1 {
 
 a {
   color: $green;
+
   &:hover {
     text-decoration: none;
     color: $pink;
@@ -40,6 +42,7 @@ a {
   border: none;
   font-size: 1.4rem;
   color: black;
+
   &:hover {
     background-color: $pink;
     border: none;
@@ -49,10 +52,23 @@ a {
 .btn-danger {
   @extend .btn-primary;
   background-color: $pink;
+
   &:hover {
     background-color: $green;
   }
 }
+
+@media (max-width: 950px) {
+  h1 {
+    font-size: 1.8rem;
+
+    img {
+      display: none
+    }
+  }
+}
+
+// Fond noir étoilé
 
 html::before,
 html::after {
@@ -68,67 +84,67 @@ html::after {
 }
 
 html::before {
-  box-shadow: 93vw 63vh .3vmin rgba(255,255,255,.8),
-  3vw 17vh .3vmin rgba(255,255,255,.8),
-  28vw 85vh .3vmin rgba(255,255,255,.8),
-  97vw 82vh .3vmin rgba(255,255,255,.8),
-  55vw 83vh .3vmin rgba(255,255,255,.8),
-  74vw 72vh .3vmin rgba(255,255,255,.8),
-  84vw 11vh .3vmin rgba(255,255,255,.8),
-  32vw 6vh .3vmin rgba(255,255,255,.8),
-  45vw 92vh .3vmin rgba(255,255,255,.8),
-  98vw 57vh .3vmin rgba(255,255,255,.8),
-  63vw 98vh .3vmin rgba(255,255,255,.8),
-  90vw 46vh .3vmin rgba(255,255,255,.8),
-  50vw 86vh .3vmin rgba(255,255,255,.8),
-  38vw 21vh .3vmin rgba(255,255,255,.8),
-  74vw 2vh .3vmin rgba(255,255,255,.8),
-  89vw 22vh .3vmin rgba(255,255,255,.8),
-  39vw 0vh .3vmin rgba(255,255,255,.8),
-  25vw 89vh .3vmin rgba(255,255,255,.8),
-  54vw 58vh .3vmin rgba(255,255,255,.8),
-  81vw 39vh .3vmin rgba(255,255,255,.8),
-  51vw 8vh .3vmin rgba(255,255,255,.8),
-  24vw 56vh .3vmin rgba(255,255,255,.8),
-  50vw 23vh .3vmin rgba(255,255,255,.8),
-  62vw 34vh .3vmin rgba(255,255,255,.8),
-  10vw 77vh .3vmin rgba(255,255,255,.8),
-  92vw 45vh .3vmin rgba(255,255,255,.8),
-  70vw 40vh .3vmin rgba(255,255,255,.8),
-  2vw 53vh .3vmin rgba(255,255,255,.8),
-  3vw 54vh .3vmin rgba(255,255,255,.8),
-  18vw 21vh .3vmin rgba(255,255,255,.8),
-  48vw 47vh .3vmin rgba(255,255,255,.8),
-  83vw 96vh .3vmin rgba(255,255,255,.8),
-  26vw 32vh .3vmin rgba(255,255,255,.8),
-  46vw 9vh .3vmin rgba(255,255,255,.8),
-  2vw 13vh .3vmin rgba(255,255,255,.8),
-  29vw 63vh .3vmin rgba(255,255,255,.8),
-  17vw 90vh .3vmin rgba(255,255,255,.8),
-  78vw 9vh .3vmin rgba(255,255,255,.8),
-  15vw 39vh .3vmin rgba(255,255,255,.8),
-  90vw 5vh .3vmin rgba(255,255,255,.8);
+  box-shadow: 93vw 63vh .3vmin rgba(255, 255, 255, .8),
+  3vw 17vh .3vmin rgba(255, 255, 255, .8),
+  28vw 85vh .3vmin rgba(255, 255, 255, .8),
+  97vw 82vh .3vmin rgba(255, 255, 255, .8),
+  55vw 83vh .3vmin rgba(255, 255, 255, .8),
+  74vw 72vh .3vmin rgba(255, 255, 255, .8),
+  84vw 11vh .3vmin rgba(255, 255, 255, .8),
+  32vw 6vh .3vmin rgba(255, 255, 255, .8),
+  45vw 92vh .3vmin rgba(255, 255, 255, .8),
+  98vw 57vh .3vmin rgba(255, 255, 255, .8),
+  63vw 98vh .3vmin rgba(255, 255, 255, .8),
+  90vw 46vh .3vmin rgba(255, 255, 255, .8),
+  50vw 86vh .3vmin rgba(255, 255, 255, .8),
+  38vw 21vh .3vmin rgba(255, 255, 255, .8),
+  74vw 2vh .3vmin rgba(255, 255, 255, .8),
+  89vw 22vh .3vmin rgba(255, 255, 255, .8),
+  39vw 0vh .3vmin rgba(255, 255, 255, .8),
+  25vw 89vh .3vmin rgba(255, 255, 255, .8),
+  54vw 58vh .3vmin rgba(255, 255, 255, .8),
+  81vw 39vh .3vmin rgba(255, 255, 255, .8),
+  51vw 8vh .3vmin rgba(255, 255, 255, .8),
+  24vw 56vh .3vmin rgba(255, 255, 255, .8),
+  50vw 23vh .3vmin rgba(255, 255, 255, .8),
+  62vw 34vh .3vmin rgba(255, 255, 255, .8),
+  10vw 77vh .3vmin rgba(255, 255, 255, .8),
+  92vw 45vh .3vmin rgba(255, 255, 255, .8),
+  70vw 40vh .3vmin rgba(255, 255, 255, .8),
+  2vw 53vh .3vmin rgba(255, 255, 255, .8),
+  3vw 54vh .3vmin rgba(255, 255, 255, .8),
+  18vw 21vh .3vmin rgba(255, 255, 255, .8),
+  48vw 47vh .3vmin rgba(255, 255, 255, .8),
+  83vw 96vh .3vmin rgba(255, 255, 255, .8),
+  26vw 32vh .3vmin rgba(255, 255, 255, .8),
+  46vw 9vh .3vmin rgba(255, 255, 255, .8),
+  2vw 13vh .3vmin rgba(255, 255, 255, .8),
+  29vw 63vh .3vmin rgba(255, 255, 255, .8),
+  17vw 90vh .3vmin rgba(255, 255, 255, .8),
+  78vw 9vh .3vmin rgba(255, 255, 255, .8),
+  15vw 39vh .3vmin rgba(255, 255, 255, .8),
+  90vw 5vh .3vmin rgba(255, 255, 255, .8);
 }
 
 html::after {
-  box-shadow: 67vw 35vh .2vmin .1vmin rgba(255,200,200,.8),
-  89vw 13vh .2vmin .1vmin rgba(255,200,200,.8),
-  77vw 62vh .2vmin .1vmin rgba(255,200,200,.8),
-  1vw 74vh .2vmin .1vmin rgba(255,200,200,.8),
-  38vw 15vh .2vmin .1vmin rgba(255,200,200,.8),
-  79vw 10vh .2vmin .1vmin rgba(255,200,200,.8),
-  16vw 47vh .2vmin .1vmin rgba(255,200,200,.8),
-  74vw 71vh .2vmin .1vmin rgba(255,200,200,.8),
-  30vw 96vh .2vmin .1vmin rgba(255,200,200,.8),
-  13vw 98vh .2vmin .1vmin rgba(255,200,200,.8),
-  9vw 40vh .2vmin .1vmin rgba(255,200,200,.8),
-  9vw 71vh .2vmin .1vmin rgba(255,200,200,.8),
-  12vw 93vh .2vmin .1vmin rgba(255,200,200,.8),
-  91vw 26vh .2vmin .1vmin rgba(255,200,200,.8),
-  73vw 48vh .2vmin .1vmin rgba(255,200,200,.8),
-  61vw 46vh .2vmin .1vmin rgba(255,200,200,.8),
-  20vw 3vh .2vmin .1vmin rgba(255,200,200,.8),
-  90vw 59vh .2vmin .1vmin rgba(255,200,200,.8),
-  48vw 72vh .2vmin .1vmin rgba(255,200,200,.8),
-  91vw 68vh .2vmin .1vmin rgba(255,200,200,.8);
+  box-shadow: 67vw 35vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  89vw 13vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  77vw 62vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  1vw 74vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  38vw 15vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  79vw 10vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  16vw 47vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  74vw 71vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  30vw 96vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  13vw 98vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  9vw 40vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  9vw 71vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  12vw 93vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  91vw 26vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  73vw 48vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  61vw 46vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  20vw 3vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  90vw 59vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  48vw 72vh .2vmin .1vmin rgba(255, 200, 200, .8),
+  91vw 68vh .2vmin .1vmin rgba(255, 200, 200, .8);
 }
