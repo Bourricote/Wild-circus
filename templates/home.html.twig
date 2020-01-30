@@ -41,10 +41,11 @@
                         </h1>
                     </div>
                     <div class="card-body">
-
+                        <a href="{{ path('one_tour', {'tour': next_tour[0].id}) }}">
                         <p class="card-text text-center">
                             Le {{ next_tour[0].date|date('d/m/Y à G:i') }}
                             à {{ next_tour[0].city }}</p>
+                        </a>
                     </div>
                 </div>
             </div>

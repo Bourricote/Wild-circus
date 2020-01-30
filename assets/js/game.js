@@ -62,6 +62,8 @@ function countdown() {
 const end = document.getElementById('end');
 const endText =document.getElementById('end-text');
 
+const winButton = document.getElementById('win-button');
+
 const winText = 'Félicitations, tu gagnes une place gratuite pour notre spectacle !';
 const loseText = 'Retente ta chance pour gagner une place !';
 
@@ -73,8 +75,32 @@ function startGame() {
     setTimeout(() => {
         timeUp = true;
         end.classList.add('display');
-        if (score > 15) {
+        if (score > 10) {
             endText.textContent = winText;
+            winButton.classList.add('display');
+            setTimeout(() => {
+                fetch(
+                    '/game',
+                    {
+                        method: 'post',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            'win': true,
+                        }),
+                    }
+                )
+                    .then(function (response) {
+                        return response.json()
+                    })
+
+                    .then(function (htmlContent) {
+
+                    })
+            }, 3000);
+
         } else {
             endText.textContent = loseText;
         }
