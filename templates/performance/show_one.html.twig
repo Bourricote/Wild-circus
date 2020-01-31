@@ -20,10 +20,10 @@
         {% for comment in comments %}
             <div>
                 <ul>
-                    <li>Auteur : {{ comment.author.firstname }} {{ comment.author.lastname }} </li>
-                    <li>Note : {{ comment.rate }}</li>
-                    <li>Le : {{ comment.createdAt|date('d/m/Y') }}</li>
-                    <li>Commentaire : {{ comment.text }}</li>
+                    <li><span class="pink">Auteur :</span> {{ comment.author.firstname }} {{ comment.author.lastname }} </li>
+                    <li><span class="pink">Note :</span> {{ comment.rate }}</li>
+                    <li><span class="pink">Le :</span> {{ comment.createdAt|date('d/m/Y') }}</li>
+                    <li><span class="pink">Commentaire :</span> {{ comment.text }}</li>
                     {% if app.user.id is defined and app.user.id == comment.author.id or is_granted('ROLE_ADMIN') %}
                         <li><a href="{{ path('comment_edit', {'id': comment.id}) }}">Supprimer ce commentaire</a>
                         </li>

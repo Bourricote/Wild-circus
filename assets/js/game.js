@@ -70,12 +70,14 @@ const loseText = 'Retente ta chance pour gagner une place !';
 function startGame() {
     scoreBoard.textContent = '0';
     score = 0;
+    timeLeft = 20;
     timeUp = false;
+    end.classList.remove('display');
     peep();
     setTimeout(() => {
         timeUp = true;
         end.classList.add('display');
-        if (score > 12) {
+        if (score > 15) {
             endText.textContent = winText;
             winButton.classList.add('display');
             setTimeout(() => {

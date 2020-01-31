@@ -86,6 +86,10 @@ a {
   }
 }
 
+.pink {
+  color: $pink;
+}
+
 @media (max-width: 950px) {
   h1 {
     font-size: 1.8rem;
