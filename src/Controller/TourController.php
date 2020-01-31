@@ -83,6 +83,7 @@ class TourController extends AbstractController
                 'number' => $form['nbTickets']->getData(),
                 'date' => $tour->getDate()->format('d/m/Y à G:i'),
                 'ville' => $tour->getCity(),
+                'prix' => $tour->getPrice() * $form['nbTickets']->getData(),
             ];
 
             if(isset($email_vars)){
