@@ -75,7 +75,7 @@ function startGame() {
     setTimeout(() => {
         timeUp = true;
         end.classList.add('display');
-        if (score > 10) {
+        if (score > 12) {
             endText.textContent = winText;
             winButton.classList.add('display');
             setTimeout(() => {

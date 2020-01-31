@@ -4,13 +4,22 @@
 
 {% block body %}
     <div class="container">
-        <h1>Inscription</h1>
+        <h1 class="my-3">Inscription</h1>
 
-        {{ form_start(registrationForm) }}
-            {{ form_widget(registrationForm) }}
+        <h2>Inscrivez-vous pour devenir fan d'Avatar Circus !</h2>
 
-        <button class="btn btn-primary my-3">S'inscrire</button>
-        {{ form_end(registrationForm) }}
+        <h3 class="my-5">Vous recevrez des informations sur nos nouveaux numéros, et pourrez laisser des commentaires
+            sur le site !</h3>
+
+        <div class="row justify-content-center">
+            <div class="col-xs-12 col-lg-6">
+                {{ form_start(registrationForm) }}
+                {{ form_widget(registrationForm) }}
+
+                <button class="btn btn-primary my-3">S'inscrire</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
 
     </div>
 {% endblock %}

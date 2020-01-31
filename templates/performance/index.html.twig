@@ -11,6 +11,7 @@
         <thead>
             <tr>
                 <th>Nom</th>
+                <th>Catégorie</th>
                 <th>Créé le</th>
                 <th>Image</th>
                 <th class="text-center">actions</th>
@@ -20,6 +21,7 @@
         {% for performance in performances %}
             <tr>
                 <td>{{ performance.name }}</td>
+                <td>{{ performance.category.name }}</td>
                 <td>{{ performance.createdAt ? performance.createdAt|date('d/m/Y') : '' }}</td>
                 <td><img src="/upload/{{ performance.imageName }}" alt="vignette" class="vignette"></td>
                 <td class="text-center">

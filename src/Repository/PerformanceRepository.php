@@ -58,7 +58,8 @@ class PerformanceRepository extends ServiceEntityRepository
 
     private function findAllQuery(): QueryBuilder
     {
-        return $this->createQueryBuilder('p');
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.createdAt', 'DESC');
     }
 
     // /**

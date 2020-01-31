@@ -9,7 +9,7 @@
         </h1>
 
         <h3 class="mt-3">Tape sur les Na'Vi pour gagner des points !</h3>
-        <h3>Si tu dépasses 15 points, tu gagnes une place gratuite pour notre spectacle à la date de ton choix !</h3>
+        <h3>Si tu dépasses 12 points, tu gagnes une place gratuite pour notre spectacle à la date de ton choix !</h3>
 
         {% if app.user %}
             <button class="btn btn-primary my-5" id="start-button">Commencer !</button>
@@ -21,7 +21,7 @@
                 <div class="hidden" id="end">
                     <h3>C'est fini !</h3>
                     <h3 id="end-text"></h3>
-                    <a href="{{ path('win') }}" class="btn btn-danger" id="win-button">Super !</a>
+                    <a href="{{ path('win') }}" class="btn btn-danger hidden" id="win-button">Super !</a>
                 </div>
 
                 <div class="game row">
